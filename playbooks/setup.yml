@@ -1,0 +1,52 @@
+---
+- name: "Set up a Matrix server"
+  hosts: "{{ target if target is defined else 'matrix_servers' }}"
+  become: true
+
+  vars_files:
+    - roles/matrix_synapse/vars/workers.yml
+
+  roles:
+    - matrix_awx
+    - matrix_base
+    - matrix_dynamic_dns
+    - matrix_mailer
+    - matrix_postgres
+    - matrix_redis
+    - matrix_corporal
+    - matrix_bridge_appservice_discord
+    - matrix_bridge_appservice_slack
+    - matrix_bridge_appservice_webhooks
+    - matrix_bridge_appservice_irc
+    - matrix_bridge_mautrix_facebook
+    - matrix_bridge_mautrix_hangouts
+    - matrix_bridge_mautrix_instagram
+    - matrix_bridge_mautrix_signal
+    - matrix_bridge_mautrix_telegram
+    - matrix_bridge_mautrix_whatsapp
+    - matrix_bridge_mx_puppet_discord
+    - matrix_bridge_mx_puppet_groupme
+    - matrix_bridge_mx_puppet_steam
+    - matrix_bridge_mx_puppet_skype
+    - matrix_bridge_mx_puppet_slack
+    - matrix_bridge_mx_puppet_twitter
+    - matrix_bridge_mx_puppet_instagram
+    - matrix_bridge_sms
+    - matrix_bot_matrix_reminder_bot
+    - matrix_bot_go_neb
+    - matrix_synapse
+    - matrix_synapse_admin
+    - matrix_prometheus_node_exporter
+    - matrix_prometheus
+    - matrix_grafana
+    - matrix_registration
+    - matrix_client_element
+    - matrix_jitsi
+    - matrix_ma1sd
+    - matrix_dimension
+    - matrix_etherpad
+    - matrix_email2matrix
+    - matrix_nginx_proxy
+    - matrix_coturn
+    - matrix_aux
+    - matrix_common_after
